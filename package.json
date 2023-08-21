@@ -1,0 +1,12 @@
+{
+  "name": "@dk/scss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "node ./src/scripts/build.js"
+  },
+  "devDependencies": {
+    "sass": "^1.66.1"
+  }
+}
