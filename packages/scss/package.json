@@ -1,5 +1,5 @@
 {
-  "name": "@dk/scss",
+  "name": "@monoreo/scss",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

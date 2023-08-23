@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const sass = require('sass');
-const { types } = require('util');
+const fs = require("fs");
+const path = require("path");
+const sass = require("sass");
+const { types } = require("util");
 
 /**
  *
@@ -13,21 +13,21 @@ const { types } = require('util');
 
 const compile = (src, output) => {
   const result = sass.compile(path.resolve(src), {
-    style: 'expanded',
+    style: "expanded",
     verbose: true,
   });
 
   fs.writeFileSync(path.resolve(output), result.css);
 };
 
-// check that if dist folder exists or not if not then create it in the scss directory
-if (!fs.existsSync(path.resolve('dist'))) {
-  fs.mkdirSync(path.resolve('dist'));
+// check that if dist folder exists or not if not then create it in the scss
+// directory
+if (!fs.existsSync(path.resolve("dist"))) {
+  fs.mkdirSync(path.resolve("dist"));
 }
 
 // compile the scss files
-compile('src/global.scss', 'dist/global.css');
-
+compile("src/global.scss", "dist/global.css");
 
 /**
  *
@@ -37,7 +37,7 @@ compile('src/global.scss', 'dist/global.css');
  */
 const getComponents = () => {
   let allComponents = [];
-  let types = ['atoms', 'molecules', 'organisms'];
+  let types = ["atoms", "molecules", "organisms"];
 
   types.forEach((type) => {
     const allFiles = fs
