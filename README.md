@@ -1,1 +1,0 @@
-# monorepo-with-design-pattern
