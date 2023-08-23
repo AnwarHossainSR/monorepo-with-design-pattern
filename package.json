@@ -1,5 +1,5 @@
 {
-  "name": "@dk/core",
+  "name": "@monoreo/core",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
