@@ -1,0 +1,113 @@
+@mixin pc() {
+    @media (min-width: ($breakpoint-sp + 1)) {
+        @content;
+    }
+}
+
+@mixin sp() {
+    @media (max-width: $breakpoint-sp) {
+        @content;
+    }
+}
+
+//  Media screen 1025 and above
+@mixin wide-pc {
+    @media (min-width: ($breakpoint-small-pc + 1)) {
+        @content;
+    }
+}
+
+// Media screen 769-1024
+@mixin small-pc() {
+    @media (max-width: $breakpoint-small-pc) and (min-width: ($breakpoint-sp + 1)) {
+        @content;
+    }
+}
+
+@mixin card-info {
+    padding: 21px 20px;
+    background: rgba($color-base-white, 80%);
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+    box-shadow: 0 4px 16px 0 rgba($color-base-black, 5%);
+    transition: box-shadow 0.25s, max-width 0.25s;
+    backdrop-filter: blur(3px) brightness(1);
+
+    &:hover {
+        box-shadow: 0 32px 64px rgba($color-base-black, 10%);
+    }
+}
+
+/*
+  convert line-height & letter-spacing px values into relative value.
+  px-based values can be extracted from Abstract. Always use this to define line-height & letter-spacing
+  If cutLineSpace=true, the spacing the top of first-line & the bottom of last-line caused by line-height will be killed.
+  --------------------------------------------------------- */
+@mixin u-fz($fontSizePx: false, $lineHeightPx: false, $letterSpacingPx: false, $cutLineSpace: false) {
+    @if ($fontSizePx) {
+        font-size: $fontSizePx + px;
+    }
+
+    @if ($lineHeightPx) {
+        line-height: ($lineHeightPx / $fontSizePx);
+    }
+
+    @if ($letterSpacingPx) {
+        letter-spacing: ($letterSpacingPx / $fontSizePx) + em;
+    }
+
+    @if ($cutLineSpace) {
+
+        &::before,
+        &::after {
+            display: block;
+            overflow: hidden;
+            content: '';
+        }
+
+        $_marginVal: (
+            $lineHeightPx - $fontSizePx) * -0.5;
+
+        &::before {
+            margin-bottom: $_marginVal + px;
+        }
+
+        &::after {
+            margin-top: $_marginVal + px;
+        }
+    }
+}
+
+// Convert Image aspectRatio
+@mixin aspectRatio($width: 1, $height: 1) {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-bottom: ($height / $width) * 100%;
+
+    &>img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@mixin bg-gradient($deg, $list) {
+    background: linear-gradient($deg, $list
+    );
+}
+
+@mixin transitions($props, $transition) {
+    $transitions: ();
+
+    @each $prop in $props {
+        $transitions: append($transitions, join($prop, $transition, space), comma);
+    }
+
+    transition: $transitions;
+}

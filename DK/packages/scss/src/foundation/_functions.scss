@@ -1,0 +1,40 @@
+@use "sass:math";
+@use "sass:map";
+@use "sass:string";
+
+@function xd-letter-spacing($value) {
+    @return ($value / 1000) * 1em;
+}
+
+@function xd-font-weight($name) {
+    $weights: ('thin': 100,
+        'extralight': 200,
+        'light': 300,
+        'demilight': 350,
+        'regular': 400,
+        'medium': 500,
+        'w3': 500,
+        'semibold': 600,
+        'bold': 700,
+        'w6': 700,
+        'extrabold': 800,
+        'black': 900,
+    );
+
+    $weight: map.get($weights, string.to-lower-case($name));
+
+    @if ($weight==null) {
+        @error "Weight #{$name} is not supported";
+    }
+
+    @return $weight;
+}
+
+@function pxToVw($value) {
+    @return #{$value / 375 * 100}vw;
+}
+
+@function column-size-division($value) {
+    $size: math.div(100%, math.div(12, $value));
+    @return $size;
+}
