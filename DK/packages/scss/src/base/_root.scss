@@ -1,0 +1,17 @@
+/* Default css variable */
+
+:root {
+    --dk-color-primary: #{$color-primary};
+    --dk-color-secondary: #{$color-secondary};
+    --dk-color-success: #{$color-success};
+    --dk-color-info: #{$color-info};
+    --dk-color-warning: #{$color-warning};
+    --dk-color-danger: #{$color-danger};
+    --dk-color-light: #{$color-light};
+    --dk-color-dark: #{$color-dark};
+    --dk-color-white: #{$color-white};
+    --dk-color-black: #{$color-black};
+    --dk-color-gray: #{$color-gray};
+    --dk-color-gray-dark: #{$color-gray-dark};
+    --dk-color-primary-light: #{$color-primary-light};
+}
